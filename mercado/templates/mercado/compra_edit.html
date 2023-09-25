@@ -1,0 +1,48 @@
+{% extends 'mercado/base.html' %}
+
+{% block content %}
+<div class="d-flex flex-column bd-highlight mb-3">
+  <div class="p-2 bd-highlight">
+      <form method="POST" class="post-form">{% csrf_token %}
+          <select name="cod" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+              {% for prod in produtos %}
+                  <option value="{{ prod.id }}">{{ prod.nome }}</option>
+              {% endfor %}
+          </select>
+          <button type="submit" class="btn btn-primary btn-lg">Adicionar</button>
+          </form>
+  </div>
+  <div class="p-2 bd-highlight">
+    
+      <table class="table table-bordered border-primary">
+          <thead>
+             <tr>
+                <th scope="col">CÓD: {{ compra_cod_compra.0 }}</th>
+             </tr>
+              <tr>
+                <th scope="col">Produto</th>
+                <th scope="col">Preço Unitário</th>
+              </tr>
+            </thead>
+          {% for c in compras %}
+          <tbody>
+              <tr>
+                <td>{{ c.produtos }}</td>
+                <td>R$ {{ c.total }}</td>
+              </tr>
+            </tbody>
+            {% endfor %}
+            <tbody>
+              <tr>
+              <th scope="row">Total</th>
+                <th>{{ total }} </th>
+              </tr>
+            </tbody>   
+  </div>
+  
+</div>
+<div>
+  <a class="btn btn-success" href="{% url 'finalizar_compra' %}">Finalzar</a>
+  <a class="btn btn-danger" href="{% url 'cancelar_compra' %}">Cancelar Compra</a>
+</div>
+{% endblock %}

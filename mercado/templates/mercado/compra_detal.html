@@ -1,0 +1,36 @@
+{% extends 'mercado/base.html' %}
+
+{% block content %}
+
+
+  <div class="container-fluid">
+  <table class="table table-bordered border-primary">
+    
+  <thead>
+        <tr>
+          <th scope="col">ID: {{ compra.0.0 }}</th>
+        </tr>
+        <tr>
+          <th scope="col">PRODUTO</th>
+          <th scope="col">PREÇO</th>
+          <th scope="col">COD. PRODUTO</th>
+        </tr>
+      </thead>
+    
+    <tbody>
+      {% for prod in compra %}
+      <tr>
+      <td scope="row">{{ prod.1 }}</td>
+      <tH scope="row">R$ {{ prod.2 }}</td>
+      <td scope="row">{{ prod.3 }}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+      <th scope="col"><button type="button" onclick="print()" class="btn btn-outline-success">Imprimir</button></th>
+      </tr>
+    </tbody>    
+  
+  </table>
+  </div>
+
+{% endblock %}

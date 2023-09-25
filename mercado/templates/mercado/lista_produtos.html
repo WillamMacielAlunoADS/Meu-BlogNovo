@@ -1,0 +1,27 @@
+{% extends 'mercado/base.html' %}
+
+{% block content %}
+     <table class="table table-bordered border-primary">
+  <thead>
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Preço Unitário</th>
+        <th scope="col">Estoque</th>
+        <th scope="col">Líquido</th>
+      </tr>
+    </thead>
+  {% for prod in produtos %}
+  <tbody>
+      <tr>
+      <th scope="row">{{ prod.id }}</th>
+        <td>{{ prod.nome }}</td>
+        <td>R$ {{ prod.preco_uni }}</td>
+        <td>{{ prod.estoque }}</td>
+        <td>R$ {{ prod.liquido }}</td>
+      </tr>
+    </tbody>
+  
+    {% endfor %}
+</table>
+{% endblock %}

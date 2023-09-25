@@ -1,0 +1,24 @@
+{% extends 'mercado/base.html' %}
+
+{% block content %}
+<table class="table table-bordered border-primary">
+    <thead>
+        <tr>
+          <th scope="col">Compra Cod.</th>
+          <th scope="col">Produtos</th>
+          <th scope="col">Total</th>
+          <th scope="col">Produto Cod.</th>
+        </tr>
+      </thead>
+    {% for prod in compras %}
+    <tbody>
+      <tr>
+      <th scope="row"><a href="{% url 'compra_detal' pk=prod.pk %}">{{ prod.cod_compra }}</a></th>
+        <td>{{ prod.produtos }}</td>
+        <td>R$ {{ prod.total }}</td>
+        <td>{{ prod.codigo_prod }}</td>
+      </tr>
+  </tbody>    
+    {% endfor %}
+  </table>
+{% endblock %}

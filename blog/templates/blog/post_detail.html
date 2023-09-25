@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="post">
+{% if post.published_date %}
+<div class="date">
+{{ post.published_date }}
+</div>
+{% endif %}
+{% if user.is_authenticated %}
+    <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a class="btn btn-default" href="{% url 'post_delete' pk=post.pk %}">Deletar</a>
+{% endif %}
+
+</span></a>
+<h1>{{ post.title }}</h1>
+<h2 style="text-align: right;">{{ post.categoria }}</h2>
+
+<p>{{ post.text|linebreaksbr }}</p><br>
+<p>Pôr: {{ post.author }}</p>
+</div>
+{% endblock %}
